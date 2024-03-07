@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="banner">
+        This is the banner
+        <h2 id="title" class="hidden">Lorem Ipsum</h2>
+        <p id="randomContent" class="hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum omnis, repellendus quisquam tenetur. Cupiditate dolores fugit nisi laboriosam sit voluptates id sapiente dolor, possimus dolorum odit sint? Necessitatibus, velit deserunt?</p>
+    </div>
+    <button id="showContent">Add</button>
+
+    <script>    
+        const title = document.querySelector('#title')
+        const randomContent = document.querySelector('#randomContent')
+        const showContentButton = document.querySelector('#showContent')
+
+        showContentButton.addEventListener('click', function() {
+            title.classList.remove('hidden');
+            randomContent.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

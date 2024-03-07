@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: 'Helvetica';
+      background-image: url('https://i.gifer.com/origin/e3/e3110366e800f79d83bd9e8155e87b80.gif');
+      background-size: cover;
+      color: white;
+    
+    
+      height: 100vh;
+      padding:0;
+      margin:0;
+    }
+
+    .container {
+      padding-top: 20px;
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: inset 0vw 0vw 0vw .1vw #22d4bc, 0vw 0vw 1.5vw 0vw #1bbcc2, 0vw 0vw 1.5vw 0vw #15b2c7;
+    }
+
+    .card-header {
+      background-color: #000000;
+      color:rgb(255, 255, 255);
+      box-shadow: inset 0vw 0vw 0vw .1vw #22d4bc, 0vw 0vw 1.5vw 0vw #1bbcc2, 0vw 0vw 1.5vw 0vw #15b2c7;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 10px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .float-end {
+      float: right;
+    }
+    h1 {
+            font-size: 25px;
+            color: #fff;
+            text-align: left;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+        from {
+             text-shadow: 0 0 10px rgb(15, 130, 138), 0 0 20px rgb(13, 113, 116), 0 0 30px #04fafa, 0 0 40px #04fafa, 0 0 50px #04fafa, 0 0 60px #04fafa, 0 0 70px #04fafa;
+        }
+  
+        to  {
+            text-shadow: 0 0 20px rgb(255, 5, 222), 0 0 30px #6104f7, 0 0 40px #b62396, 0 0 50px #b62396, 0 0 60px #b62396, 0 0 70px #b62396, 0 0 80px #b62396;
+        }
+        
+       }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form id="add-item">
+          <div class="form-group">
+            <label for="input-field"><h1>Add a title!</h1></label>
+            <input type="text" class="form-control" placeholder="Enter title" id="input-field" required>
+          </div>
+          <div class="form-group">
+            <label for="textarea-field"><h1>Add Body Content</h1></label>
+            <textarea class="form-control" placeholder="Enter content" id="textarea-field" required></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary float-end">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row mt-4" id="card-container">
+      <div class="col-md-6 offset-md-3">
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('add-item');
+      const cardContainer = document.getElementById('card-container');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        const title = document.getElementById('input-field').value;
+        const content = document.getElementById('textarea-field').value;
+        
+        addItem(title, content);
+        
+        form.reset();
+      });
+
+      cardContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('btn-danger')) {
+          const card = event.target.closest('.card');
+          card.remove();
+        }
+      });
+    });
+
+    function addItem(title, content) {
+      const cardContainer = document.getElementById('card-container');
+
+      const card = document.createElement('div');
+      card.classList.add('col-md-12');
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-header">
+            <h2>${title}</h2>
+          </div>
+          <div class="card-body">
+            <p>${content}</p>
+            <button class="btn btn-danger float-end">Delete</button>
+          </div>
+        </div>
+      `;
+
+      cardContainer.appendChild(card);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
+</html>
